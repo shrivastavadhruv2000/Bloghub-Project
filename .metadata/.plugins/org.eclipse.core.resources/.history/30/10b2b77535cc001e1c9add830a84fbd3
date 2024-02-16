@@ -1,0 +1,30 @@
+package com.dhruv.blog.controllers;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.dhruv.blog.entities.User;
+import com.dhruv.blog.payloads.UserDto;
+import com.dhruv.blog.services.UserService;
+
+@RestController
+@RequestMapping("/api/users")
+public class UserController {
+	
+	@Autowired
+	private UserService userService;
+	
+	@GetMapping("/")
+	public ResponseEntity<User> createUSer(@RequestBody UserDto userDto){
+		
+		UserDto createUSerDto = this.userService.createUser(userDto);
+		return new ResponseEntity<>(createUserDto,HttpStatus.CREATED);
+		
+	}
+
+}

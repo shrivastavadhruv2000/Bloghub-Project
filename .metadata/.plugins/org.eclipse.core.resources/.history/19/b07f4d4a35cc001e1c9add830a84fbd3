@@ -1,0 +1,5 @@
+package com.dhruv.blog.controllers;
+
+public class UserController {
+
+}
